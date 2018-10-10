@@ -12,7 +12,7 @@ require File.expand_path('../../config/environment.rb', __FILE__)
 kaufman = Author.create(name: 'Amie Kaufman')
 kristoff = Author.create(name: 'Jay Kristoff')
 
-illuminae = Book.create(title: 'Illuminae', pages: 608, year: 2015, author: [kaufman, kristoff])
+illuminae = kristoff.books.create(title: 'Illuminae', pages: 608, year: 2015)
 illuminae.reviews.create(title: 'Loved it!',
                         description: 'Instead of narrative, this book is presented through transcripts of interviews describing events, email conversations, reports, graphic elements.' ,
                         score: 5,
@@ -26,7 +26,7 @@ illuminae.reviews.create(title: 'Fast paced story',
                         score: 5,
                         user_name: 'Destiny')
 
-obsidio = Book.create(title: 'Obsidio', pages: 621, year: 2018, author: [kaufman, kristoff])
+obsidio = kristoff.books.create(title: 'Obsidio', pages: 621, year: 2018)
 obsidio.reviews.create(title: 'Absolute perfection. This is how finales are supposed to be written',
                       description: 'Wow. Where do I even begin? This is one of my favorite series of all time, and I was so eager and terrified to see it end.',
                       score: 5,
@@ -36,7 +36,7 @@ obsidio.reviews.create(title: "Don't tell me Science Fiction is dead",
                       score: 4,
                       user_name: 'Sarah')
 
-gemina = Book.create(title: 'Gemina', pages: 665, year: 2016, author: [kaufman, kristoff])
+gemina = kristoff.books.create(title: 'Gemina', pages: 665, year: 2016)
 gemina.reviews.create(title: 'Fun YA Fiction',
                       description: 'Yup, this book is pretty amazing. I felt like it was better than Illuminae in some ways.',
                       score: 5,
@@ -87,7 +87,7 @@ late_show.reviews.create(title: "For Late Nighters, Insomniacs and Early Risers,
                         user_name: 'Eddie')
 
 late_show.reviews.create(title: 'Room to grow for this new series from Michael Connelly',
-                        description: "Overall I found this book engaging but was not all that enchanted with Det. Ballard. She is a loose cannon and she shares Harry Bosch's iconoclastic anti-authority style. Bucking authority for a junior detective seems like a poor approach if she's interested in career longevity; Bosch's been around for decades and "earned" the right to challenge bureaucracy but Ballard has not. ",
+                        description: "Overall I found this book engaging but was not all that enchanted with Det. Ballard. She is a loose cannon and she shares Harry Bosch's iconoclastic anti-authority style. Bucking authority for a junior detective seems like a poor approach if she's interested in career longevity; Bosch's been around for decades and the right to challenge bureaucracy but Ballard has not. ",
                         score: 3,
                         user_name: 'Karen')
 
@@ -165,7 +165,7 @@ black_ice.reviews.create(title: 'A protagonist with unwavering dedication to doi
                         user_name: 'Karla')
 
 achebe = Author.create(name: "Chinua Achebe")
-fall_apart = Book.create(title: 'Things Fall Apart', pages: 209, year: 1994)
+fall_apart = achebe.books.create(title: 'Things Fall Apart', pages: 209, year: 1994)
 fall_apart.reviews.create(title: 'A Classic',
                         description: 'A true class of world literature...A masterpiece that has inspired generations of writers in Nigeria, across Africa, and around the world.' ,
                         score: 5,
@@ -181,9 +181,8 @@ fall_apart.reviews.create(title: 'A breath of reality',
                         score: 5,
                         user_name: 'Atwood')
 
-flynn = Author.create(name: "Vince Flynn")
 mills = Author.create(name: "Kyle Mills")
-red_war = Book.create(title: 'Red War', pages: 384, year: 2018)
+red_war = mills.books.create(title: 'Red War', pages: 384, year: 2018)
 red_war.reviews.create(title: 'Outstanding',
                         description: "Evens lead to a dramatic, you-got-your-money's-worth conclusion.Good, escapist fun." ,
                         score: 4,
@@ -194,7 +193,7 @@ red_war.reviews.create(title: 'Outstanding',
                         user_name: 'The Real Book Spy')
 
 thomas = Author.create(name: "Angie Thomas")
-u_give = Book.create(title: 'The Hate U Give', pages: 447, year: 2017)
+u_give = thomas.books.create(title: 'The Hate U Give', pages: 447, year: 2017)
 u_give.reviews.create(title: 'Fearless',
                         description: "Fearlessly honest and heartbreakingly human. Everyone should read this book.." ,
                         score: 5,
@@ -203,8 +202,9 @@ u_give.reviews.create(title: 'Unrelenting',
                         description: "Thomas has penned a powerful, in-your-face novel that will similiarly galvanize fans of Kekla Magoon's How It Went Down and Jason Reynolds and Brendan Kiely's All American Boys." ,
                         score: 5,
                         user_name: 'John Green')
+
 hawker = Author.create(name: "Olivia Hawker")
-edge_of_night = Book.create(title: "The Ragged Edge of Night", pages: 340, year: 2018)
+edge_of_night = hawker.books.create(title: "The Ragged Edge of Night", pages: 340, year: 2018)
 edge_of_night.reviews.create(title: 'Harrowing',
                         description: "Harrowing and yet life-affirming, told in the richest, most eloquent prose, The Ragged Edge of Night is one of the World War II novels that will stand out and be remembered." ,
                         score: 3,
@@ -227,14 +227,14 @@ edge_of_night.reviews.create(title: 'Perspective',
                         user_name: 'Gemma Liviero')
 
 webb = Author.create(name: "Wendy Webb")
-daughters_of_the_lake = Book.create(title: "Daughters of the Lake", pages: 317, year: 2014)
+daughters_of_the_lake = webb.books.create(title: "Daughters of the Lake", pages: 317, year: 2014)
 daughters_of_the_lake.reviews.create(title: 'Well Delineated',
                         description: "In Wendy Webb’s entrancing Daughters of the Lake, dreams open a door between the dead and the living, a lake spirit calls to a family of gifted women, and a century-old murder is solved under the cover of fog. This northern gothic gem is everything that is delicious, spooky, and impossible to put down." ,
                         score: 5,
                         user_name: 'Emily Carpenter')
 
 leigh = Author.create(name: "Melinda Leigh")
-what_ive_done = Book.create(title: "What I've Done", pages: 333, year: 2007)
+what_ive_done = leigh.books.create(title: "What I've Done", pages: 333, year: 2007)
 what_ive_done.reviews.create(title: 'Well Delineated',
                         description: "Captivating from the beginning to end." ,
                         score: 5,
