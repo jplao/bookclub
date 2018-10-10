@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   def self.average_rating
     if self.all.empty?
     else
-      average(:score).round
+      average(:score).round(2)
     end
   end
 end

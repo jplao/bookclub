@@ -1,18 +1,5 @@
-RSpec.describe "a visitor visits the book index page" do
-  it 'should show a list of all books' do
-    kristoff = Author.create(name: 'Jay Kristoff')
-    illuminae = kristoff.books.create(title: 'Illuminae', pages: 608, year: 2015)
-    obsidio = kristoff.books.create(title: 'Obsidio', pages: 621, year: 2018)
-    gemina = kristoff.books.create(title: 'Gemina', pages: 665, year: 2016)
-
-    visit "/books"
-
-    expect(page).to have_content(kristoff.name)
-    expect(page).to have_content(obsidio.title)
-    expect(page).to have_content(gemina.title)
-  end
-
-  it 'should show the statistics for each book on the page' do
+RSpec.describe "a visitor visits the book show page" do
+  it "should show book info" do
     kaufman = Author.create(name: 'Amie Kaufman')
     kristoff = Author.create(name: 'Jay Kristoff')
     illuminae = Book.create(title: 'Illuminae', pages: 608, year: 2015)
@@ -30,10 +17,11 @@ RSpec.describe "a visitor visits the book index page" do
                             score: 5,
                             user_name: 'Destiny')
 
+    visit "/books/1"
 
-    visit "/books"
-
-    expect(page).to have_content("Total Reviews: 3")
-    expect(page).to have_content("Average Rating: 4")
+    expect(page).to have_content(illuminae.title)
+    expect(page).to have_content(illuminae.authors)
+    expect(page).to have_content(illuminae.pages)
+    expect(page).to have_content(illuminae.year)
   end
 end
