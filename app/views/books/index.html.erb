@@ -10,9 +10,13 @@
 <% @books.each do |book| %>
 <h2><%= book.title %></h2>
 <ul>
-  <li><%= book.pages %></li>
-  <li><%= book.year %></li>
-  <li> <strong>Total Reviews:</strong><%= book.reviews.count %></li>
-  <li> <strong>Average Rating:</strong><%= book.average_rating %></li>
+  <li>Pages: <%= book.pages %></li>
+  <li>Year: <%= book.year %></li>
+  <% book.authors.each do |author| %>
+  <li>Author: <%= author.name %> </li>
+  <% end %>
+  <li> <strong>Total Reviews: </strong><%= book.reviews.count %></li>
+  <li> <strong>Average Rating: </strong><%= book.reviews.average_rating %></li>
+
 </ul>
 <% end %>
