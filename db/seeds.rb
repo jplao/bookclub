@@ -1,5 +1,7 @@
 require File.expand_path('../../config/environment.rb', __FILE__)
-
+require 'database_cleaner'
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -8,11 +10,10 @@ require File.expand_path('../../config/environment.rb', __FILE__)
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 kaufman = Author.create(name: 'Amie Kaufman')
 kristoff = Author.create(name: 'Jay Kristoff')
-
-illuminae = kristoff.books.create(title: 'Illuminae', pages: 608, year: 2015)
+illuminae = Book.create(title: 'Illuminae', pages: 608, year: 2015)
+illuminae.authors << [kaufman,kristoff]
 illuminae.reviews.create(title: 'Loved it!',
                         description: 'Instead of narrative, this book is presented through transcripts of interviews describing events, email conversations, reports, graphic elements.' ,
                         score: 5,
@@ -26,7 +27,10 @@ illuminae.reviews.create(title: 'Fast paced story',
                         score: 5,
                         user_name: 'Destiny')
 
-obsidio = kristoff.books.create(title: 'Obsidio', pages: 621, year: 2018)
+obsidio = Book.create(title: 'Obsidio', pages: 621, year: 2018)
+obsidio.authors << [kaufman,kristoff]
+
+
 obsidio.reviews.create(title: 'Absolute perfection. This is how finales are supposed to be written',
                       description: 'Wow. Where do I even begin? This is one of my favorite series of all time, and I was so eager and terrified to see it end.',
                       score: 5,
@@ -36,7 +40,10 @@ obsidio.reviews.create(title: "Don't tell me Science Fiction is dead",
                       score: 4,
                       user_name: 'Sarah')
 
-gemina = kristoff.books.create(title: 'Gemina', pages: 665, year: 2016)
+gemina = Book.create(title: 'Gemina', pages: 665, year: 2016)
+gemina.authors << [kaufman,kristoff]
+
+
 gemina.reviews.create(title: 'Fun YA Fiction',
                       description: 'Yup, this book is pretty amazing. I felt like it was better than Illuminae in some ways.',
                       score: 5,
@@ -52,13 +59,16 @@ gemina.reviews.create(title: "A great addition to a fantastic series!",
                       score: 4,
                       user_name: 'Rebecca')
 
-zeff = Author.create(name: 'Randi Zeff')
-listener = zeff.books.create(title: 'The Listner', pages: 290, year: 2017)
+listener = Book.create(title: 'The Listener', pages: 290, year: 2017)
+listener.authors.create(name: 'Randi Zeff')
 
 rollins = Author.create(name: 'James Rollins')
-crucible = rollins.books.create(title: "Crucible: A Thriller", pages: 448, year: 2019)
+crucible = Book.create(title: "Crucible: A Thriller", pages: 448, year: 2019)
+crucible.authors << rollins
 
-amazonia = rollins.books.create(title: "Amazonia", pages: 544, year: 2009)
+amazonia = Book.create(title: "Amazonia", pages: 544, year: 2009)
+amazonia.authors << rollins
+
 amazonia.reviews.create(title: 'A Creative Framework With Continuous Action',
                       description: "This was my first James Rollins book and it was a page turning thriller. The conceptual framework that kept the action moving was most creative. On the negative side readers have to suspend reality with regard to much of the story line. However as a positive, the action is almost continuous so one doesn't really have the time - or the inclination - to reflect on the absurdities.",
                       score: 4,
@@ -80,7 +90,9 @@ amazonia.reviews.create(title: "Parts Were Interesting But it is Too Unrealistic
                       user_name: 'Adriana')
 
 connelly = Author.create(name: 'Michael Connelly')
-late_show = connelly.books.create(title: 'The Late Show', pages: 448, year: 2017)
+late_show = Book.create(title: 'The Late Show', pages: 448, year: 2017)
+late_show.authors << connelly
+
 late_show.reviews.create(title: "For Late Nighters, Insomniacs and Early Risers, Connelly Never Fails",
                         description: "His attention to detail in investigations is authentic, superb and on the level of Ed McBain or Joseph Wambaugh. He cranks out quality writing, but bucks the current trend in churning out books, to readers dissatisfaction, by not partnering with co-writers like some bestselling authors do to meet the demands of their readers. Connelly does his own homework and we are the benefactor.",
                         score: 5,
@@ -107,7 +119,9 @@ late_show.reviews.create(title: "Hard to believe it's written by Michael Connell
                         score: 3,
                         user_name: 'Tina')
 
-two_kinds = connelly.books.create(title: "Two Kinds of Truth", pages: 417, year: 2017)
+two_kinds = Book.create(title: "Two Kinds of Truth", pages: 417, year: 2017)
+two_kinds.authors << connelly
+
 two_kinds.reviews.create(title: 'Another fabulous Harry Bosch book',
                         description: 'Michael Connelly has done it yet again. Two Kinds of Truth is an outstanding addition to the fabulous Harry Bosch series. This mystery series is one of my very favorites',
                         score: 5,
@@ -133,7 +147,9 @@ two_kinds.reviews.create(title: 'Harry Bosch returns for another entertaining ta
                         score: 5,
                         user_name: 'David')
 
-black_ice = connelly.books.create(title: 'The Black Ice', pages: 433, year: 2002)
+black_ice = Book.create(title: 'The Black Ice', pages: 433, year: 2002)
+black_ice.authors << connelly
+
 black_ice.reviews.create(title: "It's all in the details....",
                         description: "I have chosen to delve fully into the Bosch series...all 23 and counting. It will take awhile but as I dig into this persona, I can't help but feel Connelly has given his character a solid, real ( well, as real as fiction can get), texture....warts and all. I am reading them sequentially to follow the timeline of Harry's perslnal/professional life.",
                         score: 5,
@@ -164,8 +180,8 @@ black_ice.reviews.create(title: 'A protagonist with unwavering dedication to doi
                         score: 4,
                         user_name: 'Karla')
 
-achebe = Author.create(name: "Chinua Achebe")
-fall_apart = achebe.books.create(title: 'Things Fall Apart', pages: 209, year: 1994)
+fall_apart = Book.create(title: 'Things Fall Apart', pages: 209, year: 1994)
+fall_apart.authors.create(name: "Chinua Achebe")
 fall_apart.reviews.create(title: 'A Classic',
                         description: 'A true class of world literature...A masterpiece that has inspired generations of writers in Nigeria, across Africa, and around the world.' ,
                         score: 5,
@@ -181,8 +197,8 @@ fall_apart.reviews.create(title: 'A breath of reality',
                         score: 5,
                         user_name: 'Atwood')
 
-mills = Author.create(name: "Kyle Mills")
-red_war = mills.books.create(title: 'Red War', pages: 384, year: 2018)
+red_war = Book.create(title: 'Red War', pages: 384, year: 2018)
+red_war.authors.create(name: "Kyle Mills")
 red_war.reviews.create(title: 'Outstanding',
                         description: "Evens lead to a dramatic, you-got-your-money's-worth conclusion.Good, escapist fun." ,
                         score: 4,
@@ -192,8 +208,8 @@ red_war.reviews.create(title: 'Outstanding',
                         score: 5,
                         user_name: 'The Real Book Spy')
 
-thomas = Author.create(name: "Angie Thomas")
-u_give = thomas.books.create(title: 'The Hate U Give', pages: 447, year: 2017)
+u_give = Book.create(title: 'The Hate U Give', pages: 447, year: 2017)
+u_give.authors.create(name: "Angie Thomas")
 u_give.reviews.create(title: 'Fearless',
                         description: "Fearlessly honest and heartbreakingly human. Everyone should read this book.." ,
                         score: 5,
@@ -203,8 +219,8 @@ u_give.reviews.create(title: 'Unrelenting',
                         score: 5,
                         user_name: 'John Green')
 
-hawker = Author.create(name: "Olivia Hawker")
-edge_of_night = hawker.books.create(title: "The Ragged Edge of Night", pages: 340, year: 2018)
+edge_of_night = Book.create(title: "The Ragged Edge of Night", pages: 340, year: 2018)
+edge_of_night.authors.create(name: "Olivia Hawker")
 edge_of_night.reviews.create(title: 'Harrowing',
                         description: "Harrowing and yet life-affirming, told in the richest, most eloquent prose, The Ragged Edge of Night is one of the World War II novels that will stand out and be remembered." ,
                         score: 3,
@@ -226,15 +242,15 @@ edge_of_night.reviews.create(title: 'Perspective',
                         score: 5,
                         user_name: 'Gemma Liviero')
 
-webb = Author.create(name: "Wendy Webb")
-daughters_of_the_lake = webb.books.create(title: "Daughters of the Lake", pages: 317, year: 2014)
+daughters_of_the_lake = Book.create(title: "Daughters of the Lake", pages: 317, year: 2014)
+daughters_of_the_lake.authors.create(name: "Wendy Webb")
 daughters_of_the_lake.reviews.create(title: 'Well Delineated',
                         description: "In Wendy Webb’s entrancing Daughters of the Lake, dreams open a door between the dead and the living, a lake spirit calls to a family of gifted women, and a century-old murder is solved under the cover of fog. This northern gothic gem is everything that is delicious, spooky, and impossible to put down." ,
                         score: 5,
                         user_name: 'Emily Carpenter')
 
-leigh = Author.create(name: "Melinda Leigh")
-what_ive_done = leigh.books.create(title: "What I've Done", pages: 333, year: 2007)
+what_ive_done = Book.create(title: "What I've Done", pages: 333, year: 2007)
+what_ive_done.authors.create(name: "Melinda Leigh")
 what_ive_done.reviews.create(title: 'Well Delineated',
                         description: "Captivating from the beginning to end." ,
                         score: 5,
