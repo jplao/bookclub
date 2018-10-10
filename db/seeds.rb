@@ -78,31 +78,31 @@ daughters_of_the_lake.reviews.create(title: 'Well Delineated',
 
 leigh = Author.create(name: "Melinda Leigh")
 what_ive_done = Book.create(title: "What I've Done", pages: 333, year: 2007)
-daughters_of_the_lake.reviews.create(title: 'Well Delineated',
+what_ive_done.reviews.create(title: 'Well Delineated',
                         description: "Captivating from the beginning to end." ,
                         score: 5,
                         user_name: 'Will Burr')
-daughters_of_the_lake.reviews.create(title: 'Provoking',
+what_ive_done.reviews.create(title: 'Provoking',
                         description: "Pick it up and you won't put it down." ,
                         score: 4,
                         user_name: 'Roger Feddel')
-daughters_of_the_lake.reviews.create(title: 'Emotionally Charged',
+what_ive_done.reviews.create(title: 'Emotionally Charged',
                         description: "Not for the faint of heart, read with caution." ,
                         score: 2,
                         user_name: 'Christa Queen')
-daughters_of_the_lake.reviews.create(title: 'Lackluster',
+what_ive_done.reviews.create(title: 'Lackluster',
                         description: "Money can be spent on a better book." ,
                         score: 1,
                         user_name: 'Rachel Wilhelm')
-daughters_of_the_lake.reviews.create(title: 'Must Read',
+what_ive_done.reviews.create(title: 'Must Read',
                         description: "Enjoyable enough to the point of obsession." ,
                         score: 5,
                         user_name: 'Linda Pez')
-daughters_of_the_lake.reviews.create(title: 'Roller-Coaster-Fun',
+what_ive_done.reviews.create(title: 'Roller-Coaster-Fun',
                         description: "Makes the brain wild while taming the heart.." ,
                         score: 5,
                         user_name: 'Bill Doherty')
-daughters_of_the_lake.reviews.create(title: 'Final Thoughts',
+what_ive_done.reviews.create(title: 'Final Thoughts',
                         description: "If you are looking for a late night read to relax to, this is it." ,
                         score: 5,
                         user_name: 'Roxanne Chiles')
