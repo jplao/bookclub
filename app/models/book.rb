@@ -2,4 +2,8 @@ class Book < ApplicationRecord
   has_many :reviews
   has_many :book_authors
   has_many :authors, through: :book_authors
+
+  def self.average_rating
+    average(:score)
+  end
 end
