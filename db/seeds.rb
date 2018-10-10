@@ -50,12 +50,12 @@ gemina.reviews.create(title: "A great addition to a fantastic series!",
                       user_name: 'Rebecca')
 
 zeff = Author.create(name: 'Randi Zeff')
-listener = Book.create(title: 'The Listner', pages: 290, year: 2017, author: zeff)
+listener = zeff.books.create(title: 'The Listner', pages: 290, year: 2017)
 
 rollins = Author.create(name: 'James Rollins')
-crucible = Book.create(title: "Crucible: A Thriller", pages: 448, year: 2019, author: rollins)
+crucible = rollins.books.create(title: "Crucible: A Thriller", pages: 448, year: 2019)
 
-amazonia = Book.create(title: "Amazonia", pages: 544, year: 2009, author: rollins)
+amazonia = rollins.books.create(title: "Amazonia", pages: 544, year: 2009)
 amazonia.reviews.create(title: 'A Creative Framework With Continuous Action',
                       description: "This was my first James Rollins book and it was a page turning thriller. The conceptual framework that kept the action moving was most creative. On the negative side readers have to suspend reality with regard to much of the story line. However as a positive, the action is almost continuous so one doesn't really have the time - or the inclination - to reflect on the absurdities.",
                       score: 4,
@@ -77,7 +77,7 @@ amazonia.reviews.create(title: "Parts Were Interesting But it is Too Unrealistic
                       user_name: 'Adriana')
 
 connelly = Author.create(name: 'Michael Connelly')
-late_show = Book.create(title: 'The Late Show', pages: 448, year: 2017, author: connelly)
+late_show = connelly.books.create(title: 'The Late Show', pages: 448, year: 2017)
 late_show.reviews.create(title: "For Late Nighters, Insomniacs and Early Risers, Connelly Never Fails",
                         description: "His attention to detail in investigations is authentic, superb and on the level of Ed McBain or Joseph Wambaugh. He cranks out quality writing, but bucks the current trend in churning out books, to readers dissatisfaction, by not partnering with co-writers like some bestselling authors do to meet the demands of their readers. Connelly does his own homework and we are the benefactor.",
                         score: 5,
@@ -104,7 +104,7 @@ late_show.reviews.create(title: "Hard to believe it's written by Michael Connell
                         score: 3,
                         user_name: 'Tina')
 
-two_kinds = Book.create(title: "Two Kinds of Truth", pages: 417, year: 2017, author: connelly)
+two_kinds = connelly.books.create(title: "Two Kinds of Truth", pages: 417, year: 2017)
 two_kinds.reviews.create(title: 'Another fabulous Harry Bosch book',
                         description: 'Michael Connelly has done it yet again. Two Kinds of Truth is an outstanding addition to the fabulous Harry Bosch series. This mystery series is one of my very favorites',
                         score: 5,
@@ -130,7 +130,7 @@ two_kinds.reviews.create(title: 'Harry Bosch returns for another entertaining ta
                         score: 5,
                         user_name: 'David')
 
-black_ice = Book.create(title: 'The Black Ice', pages: 433, year: 2002, author: connelly)
+black_ice = connelly.books.create(title: 'The Black Ice', pages: 433, year: 2002)
 black_ice.reviews.create(title: "It's all in the details....",
                         description: "I have chosen to delve fully into the Bosch series...all 23 and counting. It will take awhile but as I dig into this persona, I can't help but feel Connelly has given his character a solid, real ( well, as real as fiction can get), texture....warts and all. I am reading them sequentially to follow the timeline of Harry's perslnal/professional life.",
                         score: 5,
