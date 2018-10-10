@@ -1,0 +1,18 @@
+<h1>All Books</h1>
+
+<div class="statistics">
+  <h2>Statistics</h2>
+  <p>
+    <strong>Average Rating: </strong>
+  </p>
+</div>
+
+<% @books.each do |book| %>
+<h2><%= book.title %></h2>
+<ul>
+  <li><%= book.pages %></li>
+  <li><%= book.year %></li>
+  <li> <strong>Total Reviews:</strong><%= book.reviews.count %></li>
+  <li> <strong>Average Rating:</strong><%= book.average_rating %></li>
+</ul>
+<% end %>
