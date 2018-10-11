@@ -3,6 +3,7 @@ class Review < ApplicationRecord
 
   def self.average_rating
     if self.all.empty?
+      'No Reviews'
     else
       average(:score).round(2)
     end
