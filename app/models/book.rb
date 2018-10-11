@@ -8,9 +8,9 @@ class Book < ApplicationRecord
   #     order('@books.reviews.average_rating DESC')
   # end
 
-  # def self.queries(params)
-  #
-  # end
+  def self.queries
+    select('books.*, avg(reviews.score) as avg_score, count(reviews.id) as total_reviews').joins(:reviews).group(:book_id, :id).order('total_reviews DESC')
+  end
 
   def self.sort_pages_asc
     order(:pages)
