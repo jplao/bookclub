@@ -10,18 +10,12 @@ class Review < ApplicationRecord
   end
 
   def self.top_three
-    if self.all.empty?
-    else
-      reviews = order(score: :desc)
-      reviews.first(3)
-    end
+      ordered_reviews = order(score: :desc)
+      ordered_reviews.first(3)
   end
 
   def self.bottom_three
-    if self.all.empty?
-    else
-      reviews = order(score: :asc)
-      reviews.first(3)
-    end
+      ordered_reviews = order(score: :asc)
+      ordered_reviews.first(3)
   end
 end

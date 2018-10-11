@@ -31,7 +31,7 @@ RSpec.describe "a visitor visits the book index page" do
                             user_name: 'Destiny')
 
 
-    visit "/books"
+    visit "/books?sort=rating_asc"
 
     expect(page).to have_content("Total Reviews: 3")
     expect(page).to have_content("Average Rating: 4")
