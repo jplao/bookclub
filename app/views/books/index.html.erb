@@ -9,7 +9,7 @@
 
 <% @books.each do |book| %>
 <div class="books">
-<h2><%= book.title %></h2>
+<h2><%= link_to(book.title, book_path(book)) %></h2>
 <ul>
   <li>Pages: <%= book.pages %></li>
   <li>Year: <%= book.year %></li>
