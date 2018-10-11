@@ -3,7 +3,6 @@
 <div class="statistics">
   <h2>Statistics</h2>
   <p>
-    <strong>Average Rating: </strong>
   </p>
 </div>
 
@@ -11,11 +10,12 @@
 <div class="books">
 <h2><%= book.title %></h2>
 <ul>
-  <li>Pages: <%= book.pages %></li>
-  <li>Year: <%= book.year %></li>
-  <% book.authors.each do |author| %>
-  <li>Author: <%= author.name %> </li>
-  <% end %>
+  <li><strong>Pages: </strong><%= book.pages %></li>
+  <li><strong>Year: </strong><%= book.year %></li>
+
+  <li><strong>Author(s): </strong><br>
+  <% book.authors.each do |author| %><%= author.name %> <br> <% end %></li>
+
   <li> <strong>Total Reviews: </strong><%= book.reviews.count %></li>
   <li> <strong>Average Rating: </strong><%= book.reviews.average_rating %></li>
 
