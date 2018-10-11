@@ -12,6 +12,7 @@ DatabaseCleaner.clean
 
 kaufman = Author.create(name: 'Amie Kaufman')
 kristoff = Author.create(name: 'Jay Kristoff')
+
 illuminae = Book.create(title: 'Illuminae', pages: 608, year: 2015)
 illuminae.authors << [kaufman,kristoff]
 review_1 = illuminae.reviews.create(title: 'Loved it!',
@@ -26,8 +27,6 @@ review_3 = illuminae.reviews.create(title: 'Fast paced story',
 
 obsidio = Book.create(title: 'Obsidio', pages: 621, year: 2018)
 obsidio.authors << [kaufman,kristoff]
-
-
 review_4 = obsidio.reviews.create(title: 'Absolute perfection. This is how finales are supposed to be written',
                       description: 'Wow. Where do I even begin? This is one of my favorite series of all time, and I was so eager and terrified to see it end.',
                       score: 5)
@@ -37,8 +36,6 @@ review_5 = obsidio.reviews.create(title: "Don't tell me Science Fiction is dead"
 
 gemina = Book.create(title: 'Gemina', pages: 665, year: 2016)
 gemina.authors << [kaufman,kristoff]
-
-
 review_6 = gemina.reviews.create(title: 'Fun YA Fiction',
                       description: 'Yup, this book is pretty amazing. I felt like it was better than Illuminae in some ways.',
                       score: 5)
@@ -60,7 +57,6 @@ crucible.authors << rollins
 
 amazonia = Book.create(title: "Amazonia", pages: 544, year: 2009)
 amazonia.authors << rollins
-
 review_9 = amazonia.reviews.create(title: 'A Creative Framework With Continuous Action',
                       description: "This was my first James Rollins book and it was a page turning thriller. The conceptual framework that kept the action moving was most creative. On the negative side readers have to suspend reality with regard to much of the story line. However as a positive, the action is almost continuous so one doesn't really have the time - or the inclination - to reflect on the absurdities.",
                       score: 4)
@@ -80,7 +76,6 @@ review_12 = amazonia.reviews.create(title: "Parts Were Interesting But it is Too
 connelly = Author.create(name: 'Michael Connelly')
 late_show = Book.create(title: 'The Late Show', pages: 448, year: 2017)
 late_show.authors << connelly
-
 review_13 = late_show.reviews.create(title: "For Late Nighters, Insomniacs and Early Risers, Connelly Never Fails",
                         description: "His attention to detail in investigations is authentic, superb and on the level of Ed McBain or Joseph Wambaugh. He cranks out quality writing, but bucks the current trend in churning out books, to readers dissatisfaction, by not partnering with co-writers like some bestselling authors do to meet the demands of their readers. Connelly does his own homework and we are the benefactor.",
                         score: 5)
@@ -88,7 +83,6 @@ review_13 = late_show.reviews.create(title: "For Late Nighters, Insomniacs and E
 review_14 = late_show.reviews.create(title: 'Room to grow for this new series from Michael Connelly',
                         description: "Overall I found this book engaging but was not all that enchanted with Det. Ballard. She is a loose cannon and she shares Harry Bosch's iconoclastic anti-authority style. Bucking authority for a junior detective seems like a poor approach if she's interested in career longevity; Bosch's been around for decades and the right to challenge bureaucracy but Ballard has not. ",
                         score: 3)
-
 
 review_15 = late_show.reviews.create(title: 'A welcome new addition to the Bosch Universe',
                         description: "When it comes to murder mysteries, Michael Connelly is my go-to author. If he writes it, I read it. So when I received notice that he was beginning a new series, starting with The Late Show, I pre-ordered the book months in advance and read it in a day once it arrived.",
@@ -127,7 +121,6 @@ review_22 = two_kinds.reviews.create(title: 'Harry Bosch returns for another ent
 
 black_ice = Book.create(title: 'The Black Ice', pages: 433, year: 2002)
 black_ice.authors << connelly
-
 review_23 = black_ice.reviews.create(title: "It's all in the details....",
                         description: "I have chosen to delve fully into the Bosch series...all 23 and counting. It will take awhile but as I dig into this persona, I can't help but feel Connelly has given his character a solid, real ( well, as real as fiction can get), texture....warts and all. I am reading them sequentially to follow the timeline of Harry's perslnal/professional life.",
                         score: 5)

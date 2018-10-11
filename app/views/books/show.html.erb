@@ -21,7 +21,7 @@
   <% @books.reviews.top_three.each do |review| %>
     <ul>
     <li><strong><%= review.title %> </strong></li>
-      <strong>User Name: </strong><%= review.user_name %><br>
+      <strong>User Name: </strong><%= review.user.name %><br>
       <strong>Rating: </strong><%= review.score %>
     </ul>
   <% end %>
@@ -30,7 +30,7 @@
   <% @books.reviews.bottom_three.each do |review| %>
     <ul>
     <li><strong><%= review.title %> </strong></li>
-      <strong>User Name: </strong><%= review.user_name %><br>
+      <strong>User Name: </strong><%= review.user.name %><br>
       <strong>Rating: </strong><%= review.score %>
     </ul>
   <% end %>
@@ -46,7 +46,7 @@
   <ul>
   <% @books.reviews.each do |review| %>
   <li><strong><%= review.title %></strong></li>
-  <strong>User Name: </strong><%= review.user_name %>
+  <strong>User Name: </strong><%= review.user.name %>
   <br><strong>Rating: </strong><%= review.score %>
   <br><strong>Comments: </strong><%= review.description %>
   <br>

@@ -1,15 +1,16 @@
 <h1> <%= @authors.name %></h1>
+
 <div class="books">
+<h2>Books</h2>
   <ul>
   <% @authors.books.each do |book| %>
-  <li><h2><%= book.title %></h2></li>
+  <li><h3><%= book.title %></h3></li>
   <ul>
-      <li>Pages: <%= book.pages %></li>
-  <li>Top Review Title: <%= book.reviews.top_three.first.title %></li>
-  <li>Top Review Score: <%= book.reviews.top_three.first.score %></li>
-  <li>Top Review User Name: <%= book.reviews.top_three.first.user_name %></li>
-</ul>
-  <br>
+    <li>Pages: <%= book.pages %></li>
+    <li>Top Review Title: <%= book.reviews.top_three.first.title %></li>
+    <li>Top Review Score: <%= book.reviews.top_three.first.score %></li>
+    <li>Top Review User Name: <%= book.reviews.top_three.first.user.name %></li>
+    </ul>
   <% end %>
   </ul>
 
