@@ -8,6 +8,7 @@
 </div>
 
 <% @books.each do |book| %>
+<div class="books">
 <h2><%= book.title %></h2>
 <ul>
   <li>Pages: <%= book.pages %></li>
@@ -19,4 +20,6 @@
   <li> <strong>Average Rating: </strong><%= book.reviews.average_rating %></li>
 
 </ul>
+</div>
+
 <% end %>
