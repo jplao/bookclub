@@ -7,4 +7,20 @@ class Review < ApplicationRecord
       average(:score).round(2)
     end
   end
+
+  def self.top_three
+    if self.all.empty?
+    else
+      reviews = order(score: :desc)
+      reviews.first(3)
+    end
+  end
+
+  def self.bottom_three
+    if self.all.empty?
+    else
+      reviews = order(score: :asc)
+      reviews.first(3)
+    end
+  end
 end
