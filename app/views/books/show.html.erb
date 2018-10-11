@@ -1,25 +1,58 @@
+
 <h1>All Books</h1>
 <%= link_to("All Books", root_path) %>
-<div class="statistics">
-  <h2>Statistics</h2>
-  <p>
-    <strong>Average Rating: </strong>
-  </p>
+
+<h1><%= @books.title %></h1>
+
+<div class="books">
+<h2> Book Info </h2>
+<ul>
+  <li><strong>Pages: </strong><%= @books.pages %></li>
+  <li><strong>Year: </strong><%= @books.year %></li>
+  <li><strong>Author(s): </strong><br>
+  <% @books.authors.each do |author| %><%= author.name %> <br> <% end %></li>
+</ul>
 </div>
 
-<h2><%= @books.title %></h2>
-<ul>
-  <li>Pages: <%= @books.pages %></li>
-  <li>Year: <%= @books.year %></li>
-  <% @books.authors.each do |author| %>
-  <li>Author: <%= author.name %> </li>
-  <br>
+
+<div class="statistics">
+  <h2>Statistics</h2>
+
+  <h3> Top 3 Reviews </h3>
+  <% @books.reviews.top_three.each do |review| %>
+    <ul>
+    <li><strong><%= review.title %> </strong></li>
+      <strong>User Name: </strong><%= review.user_name %><br>
+      <strong>Rating: </strong><%= review.score %>
+    </ul>
+  <% end %>
+
+  <h3> Bottom 3 Reviews </h3>
+  <% @books.reviews.bottom_three.each do |review| %>
+    <ul>
+    <li><strong><%= review.title %> </strong></li>
+      <strong>User Name: </strong><%= review.user_name %><br>
+      <strong>Rating: </strong><%= review.score %>
+    </ul>
+  <% end %>
+
+  <h3>Average Rating: </h3>
+  <ul>
+  <li><%= @books.reviews.average_rating %></li>
+  </ul>
+</div>
+
+<div class="reviews">
+  <h2>Reviews: </h2>
+  <ul>
   <% @books.reviews.each do |review| %>
   <li><strong><%= review.title %></strong></li>
-  <li><%= review.score %></li>
-  <li><%= review.user_name %></li>
-  <li><%= review.description %></li>
+  <strong>User Name: </strong><%= review.user_name %>
+  <br><strong>Rating: </strong><%= review.score %>
+  <br><strong>Comments: </strong><%= review.description %>
   <br>
+  <br>
+
   <% end %>
-  <% end %>
-</ul>
+  </ul>
+</div>

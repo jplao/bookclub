@@ -1,15 +1,27 @@
-/* body {
+body {
+  font-family: Arial, Helvetica, sans-serif;
   background-image: url(https://d1le9g1q5z956q.cloudfront.net/picture-of-the-day/239/large_Sean-J-Yan-www.onebigphoto.com_-1.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
+h1 {
+  font-size: 50px;
+  text-align: center;
+  color: white;
+  text-shadow: 3px 2px gray;
+}
 .statistics {
   background-color: white;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .books {
   background-color: white;
-  opacity: 0.5;
-} */
+  opacity: 0.8;
+}
+
+.reviews {
+  background-color: white;
+  opacity: 0.8;
+}
