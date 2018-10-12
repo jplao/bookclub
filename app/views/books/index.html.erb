@@ -7,15 +7,16 @@
 </div>
 <div class="sort">
 
-<select><h3>Sort By Methods</h3>
-  <option>Average Rating Ascending</option>
-  <option>Average Rating Descending</option>
-  <option>Number of Pages Ascending</option>
-  <option>Number of Pages Descending</option>
-  <option>Total Number of Reviews Ascending</option>
-  <option>Total Number of Reviews Descending</option>
-</select>
+<h3>Sort By Methods</h3>
+<select onchange="location = this.value;">
+<option value="/books?sort=avg_score&direction=DESC">Average Rating Ascending</option>
+<option value="/books?sort=avg_score&direction=ASC">Average Rating Descending</option>
+<option value="/books?sort=pages&direction=DESC">Number of Pages Ascending</option>
+<option value="/books?sort=pages&direction=ASC">Number of Pages Descending</option>
+<option value="/books?sort=total_reviews&direction=DESC">Total Number of Reviews Ascending</option>
+<option value="/books?sort=total_reviews&direction=ASC">Total Number of Reviews Descending</option>
 
+</select
 </div>
 
 <% @books.each do |book| %>
