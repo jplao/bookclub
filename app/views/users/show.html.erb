@@ -1,0 +1,14 @@
+<div class="users">
+
+<h1><%= @users.name %></h1>
+<% @users.reviews.each do |review| %>
+<ul>
+  <li>
+    <%= review.title %>
+  </li>
+  <li>
+    <%= review.description %>
+  </li>
+</ul>
+<% end %>
+</div>
