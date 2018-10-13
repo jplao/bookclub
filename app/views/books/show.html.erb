@@ -2,6 +2,7 @@
 <%= link_to("All Books", root_path) %>
 
 <h1><%= @books.title %></h1>
+<%= link_to "Delete Book", book_path(@books), method: :delete %>
 
 <div class="books">
 <h2> Book Info </h2>
@@ -10,7 +11,9 @@
   <li><strong>Year: </strong><%= @books.year %></li>
   <li><strong>Author(s): </strong><br>
   <% @books.authors.each do |author| %><%= author.name %> <br> <% end %></li>
+
 </ul>
+
 </div>
 
 
