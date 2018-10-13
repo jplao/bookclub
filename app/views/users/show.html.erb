@@ -1,27 +1,22 @@
-<div class="users">
+<h1><%= @users.name %></h1>
 
-  <div class="sort">
-
+<div class="sort">
   Sort by:<br>
   <select onchange="location = this.value;">
-  <option>-------</option>
-  <option value="/users?direction=DESC">Newest First</option>
-  <option value="/users?direction=ASC">Descending First</option>
+    <option>-------</option>
+    <option value="/users?direction=DESC">Newest First</option>
+    <option value="/users?direction=ASC">Descending First</option>
   </select>
-  </div>
+</div>
 
-<h1><%= @users.name %></h1>
+
 <% @users.reviews.each do |review| %>
+<div class="users" id="review_<%review.id%>">
 <ul>
-  <li>
-    <strong><%=review.title %></strong>
-  </li>
-  <li>
-    <%= review.description %>
-  </li>
+  <strong>Review Title: <%=review.title %></strong>
+  <li>Rating: <%= review.score %> </li>
+  <li>Comments: <%= review.description %></li>
 </ul>
 <%= link_to "Delete Review", review_path(review), method: :delete %>
-<% end %>
-
-
 </div>
+<% end %>
