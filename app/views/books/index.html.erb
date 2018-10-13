@@ -2,13 +2,32 @@
 
 <div class="statistics">
   <h2>Statistics</h2>
-  <p>
-  </p>
+  <h3>Top Rated Books: </h3>
+    <ul>
+    <% @top_rated_books.each do |top_book| %>
+      <li><%= top_book.title %></li>
+    <% end %>
+    </ul>
+
+  <h3>Bottom Rated Books </h3>
+    <ul>
+    <% @bottom_rated_books.each do |bottom_book| %>
+      <li><%= bottom_book.title %></li>
+    <% end %>
+    </ul>
+
+  <h3>Top Users</h3>
+    <ul>
+    <% @top_users.each do |user| %>
+      <li><%= user.name %></li>
+    <% end %>
+    </ul>
 </div>
 <div class="sort">
 
-<h3>Sort By Methods</h3>
+Sort by:<br>
 <select onchange="location = this.value;">
+<option>-------</option>
 <option value="/books?sort=avg_score&direction=DESC">Average Rating Ascending</option>
 <option value="/books?sort=avg_score&direction=ASC">Average Rating Descending</option>
 <option value="/books?sort=pages&direction=DESC">Number of Pages Ascending</option>
@@ -30,7 +49,7 @@
   <% book.authors.each do |author| %><%= author.name %> <br> <% end %></li>
 
   <li> <strong>Total Reviews: </strong><%= book.reviews.count %></li>
-  <li> <strong>Average Rating: </strong><%= book.reviews.average_rating %></li>
+  <li> <strong>Average Rating: </strong><%= book.average_review_rating %></li>
 
 </ul>
 </div>
