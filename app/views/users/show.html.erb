@@ -1,14 +1,27 @@
 <div class="users">
 
+  <div class="sort">
+
+  Sort by:<br>
+  <select onchange="location = this.value;">
+  <option>-------</option>
+  <option value="/users?direction=DESC">Newest First</option>
+  <option value="/users?direction=ASC">Descending First</option>
+  </select>
+  </div>
+
 <h1><%= @users.name %></h1>
 <% @users.reviews.each do |review| %>
 <ul>
   <li>
-    <%= review.title %>
+    <strong><%=review.title %></strong>
   </li>
   <li>
     <%= review.description %>
   </li>
 </ul>
+<%= link_to "Delete Review", review_path(review), method: :delete %>
 <% end %>
+
+
 </div>
