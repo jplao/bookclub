@@ -19,4 +19,6 @@ class Review < ApplicationRecord
       ordered_reviews = order(score: :asc)
       ordered_reviews.first(3)
   end
+
+  
 end

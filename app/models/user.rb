@@ -9,4 +9,11 @@ class User < ApplicationRecord
     .limit(3)
   end
 
+  def self.sorted_reviews(direction)
+    select('users.*, reviews.created_at as review_date')
+    .joins(:reviews)
+    .group(:user_id, :id)
+    .order("review_date #{direction}")
+  end
+
 end
