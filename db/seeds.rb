@@ -226,10 +226,10 @@ review_48 = what_ive_done.reviews.create(title: 'Final Thoughts',
                         score: 5)
 
 user_1 = User.create(name: "Renny Johnson")
-user_1.reviews << [review_1,review_8,review_15,review_22,review_29,review_36,review_43]
+user_1.reviews << [review_1,review_5,review_8,review_15,review_22,review_29,review_36,review_43]
 
 user_2 = User.create(name: "Tobi Lou")
-user_2.reviews << [review_2,review_9,review_16,review_23,review_30,review_37,review_44]
+user_2.reviews << [review_2,review_6,review_9,review_16,review_23,review_30,review_37,review_44]
 
 user_3 = User.create(name: "Serena Kyle")
 user_3.reviews << [review_3,review_10,review_17,review_24,review_31,review_38,review_45]
@@ -238,10 +238,10 @@ user_4 = User.create(name: "Omari Ron")
 user_4.reviews << [review_4,review_11,review_18,review_25,review_32,review_39,review_46]
 
 user_5 = User.create(name: "Tory Lanez")
-user_5.reviews << [review_5,review_12,review_19,review_26,review_33,review_40,review_47]
+user_5.reviews << [review_12,review_19,review_26,review_33,review_40,review_47]
 
 user_6 = User.create(name: "Penelope Cruz")
-user_6.reviews << [review_6,review_13,review_20,review_27,review_34,review_41,review_48]
+user_6.reviews << [review_13,review_20,review_27,review_34,review_41,review_48]
 
 user_7 = User.create(name: "Ofir Keren Paz")
 user_7.reviews << [review_7,review_14,review_21,review_28,review_35,review_42]

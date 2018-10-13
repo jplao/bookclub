@@ -8,14 +8,31 @@ class Book < ApplicationRecord
     select('books.*, avg(reviews.score) as avg_score, count(reviews.id) as total_reviews')
     .joins(:reviews)
     .group(:book_id, :id)
-    .order("#{column} #{direction}")
+    .order("#{column} #{direction}", 'title asc')
   end
 
-  #def self.sort_pages_asc
-  #  order(:pages)
-  #end
+  def average_review_rating
+    if reviews == []
+      0
+    else
+      reviews.average(:score).round(2)
+    end
+  end
 
-  #def self.sort_pages_desc
-  #  order(pages: :desc)
-  #end
+  def self.top_rated_books
+    select('books.*, avg(reviews.score) as avg_score')
+    .joins(:reviews)
+    .group(:book_id, :id)
+    .order('avg_score desc', 'title asc')
+    .limit(3)
+  end
+
+  def self.bottom_rated_books
+    select('books.*, avg(reviews.score) as avg_score')
+    .joins(:reviews)
+    .group(:book_id, :id)
+    .order('avg_score asc', 'title asc')
+    .limit(3)
+  end
+
 end
