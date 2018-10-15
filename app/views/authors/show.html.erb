@@ -15,7 +15,7 @@
     <li><strong>Top Review</strong></li>
       Title: <%= book.reviews.top_review_title %>
       <br>Score: <%= book.reviews.top_review_score %>
-      <br>User Name: <%= book.reviews.top_review_user %>
+      <br>User Name: <%= link_to(book.reviews.top_review_user_name, user_path(book.reviews.top_review)) %>
     </ul>
   <% end %>
   </ul>
