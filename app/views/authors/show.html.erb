@@ -1,4 +1,6 @@
-<h1> <%= @author.name %></h1>
+<h1> <%= @authors.name %></h1>
+<%= link_to "Delete Author", author_path(@authors), method: :delete %>
+
 
 <div class="books">
 <h2>Books</h2>

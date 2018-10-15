@@ -1,7 +1,9 @@
 
 <%= link_to("All Books", root_path) %>
+<%= link_to("New Review", new_review_path) %>
 
 <h1><%= @books.title %></h1>
+<%= link_to "Delete Book", book_path(@books), method: :delete %>
 
 <div class="books">
 <h2> Book Info </h2>
@@ -12,6 +14,7 @@
   <% @book_authors.each do |author| %>
   <%= link_to(author.name, author_path(author)) %> <br> <% end %></li>
 </ul>
+
 </div>
 
 

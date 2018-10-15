@@ -1,3 +1,4 @@
+require 'rails_helper'
 RSpec.describe "a visitor visits the book index page" do
   it 'should show a list of all books' do
     kristoff = Author.create(name: 'Jay Kristoff')
@@ -12,7 +13,7 @@ RSpec.describe "a visitor visits the book index page" do
     expect(page).to have_content(gemina.title)
   end
 
-  xit 'should show the statistics for each book on the page' do
+  it 'should show the statistics for each book on the page' do
     user_1 = User.create(name: "Renny Johnson")
     user_2 = User.create(name: "Tobi Lou")
     user_3 = User.create(name: "Athena Rogers")
