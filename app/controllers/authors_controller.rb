@@ -1,7 +1,8 @@
 class AuthorsController < ApplicationController
 
   def show
-    @authors = Author.find(params[:id])
+    @author = Author.find(params[:id])
+    @author_books = @author.books
   end
 
   def destroy

@@ -1,17 +1,23 @@
 <h1> <%= @authors.name %></h1>
 <%= link_to "Delete Author", author_path(@authors), method: :delete %>
 
+
 <div class="books">
 <h2>Books</h2>
   <ul>
-  <% @authors.books.each do |book| %>
-  <li><h3><%= book.title %></h3></li>
+  <% @author_books.each do |book| %>
+  <li><h3><%= link_to(book.title, book_path(book))%></h3></li>
   <ul>
     <li>Pages: <%= book.pages %></li>
+    <li>Authors: <% book.authors.each do |author| %>
+      <% if author != @author %>
+      <%= link_to(author.name, author_path(author))%>
+      <% end %>
+    <% end %>
     <li><strong>Top Review</strong></li>
-      Title: <%= book.reviews.top_three.first.title %>
-      <br>Score: <%= book.reviews.top_three.first.score %>
-      <br>User Name: <%= book.reviews.top_three.first.user.name %>
+      Title: <%= book.reviews.top_review_title %>
+      <br>Score: <%= book.reviews.top_review_score %>
+      <br>User Name: <%= link_to(book.reviews.top_review_user_name, user_path(book.reviews.top_review)) %>
     </ul>
   <% end %>
   </ul>

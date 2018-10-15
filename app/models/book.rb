@@ -6,7 +6,7 @@ class Book < ApplicationRecord
 
   def self.sort_by(column, direction)
     select('books.*, avg(reviews.score) as avg_score, count(reviews.id) as total_reviews')
-    .joins(:reviews)
+    .left_outer_joins(:reviews)
     .group(:book_id, :id)
     .order("#{column} #{direction}", 'title asc')
   end

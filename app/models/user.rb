@@ -9,11 +9,14 @@ class User < ApplicationRecord
     .limit(3)
   end
 
-  def self.sorted_reviews(direction)
-    select('users.*, reviews.created_at as review_date')
-    .joins(:reviews)
-    .group(:user_id, :id)
-    .order("review_date #{direction}")
+  def sorted_reviews(params)
+    if params[:sort] == 'new'
+      reviews.order(created_at: :desc)
+    elsif params[:sort] == 'old'
+      reviews.order(created_at: :asc)
+    else
+      reviews
+    end
   end
 
 end

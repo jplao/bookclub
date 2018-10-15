@@ -11,7 +11,12 @@ class BooksController < ApplicationController
   end
 
   def show
-      @books = Book.find(params[:id])
+    @books = Book.find(params[:id])
+    @book_authors = @books.authors
+    @books_reviews = @books.reviews
+    @top_three = @books_reviews.top_three
+    @bottom_three = @books_reviews.bottom_three
+    @review_avg_rating = @books_reviews.average_rating
   end
 
   def destroy

@@ -4,22 +4,22 @@
   <h2>Statistics</h2>
   <h3>Top Rated Books: </h3>
     <ul>
-    <% @top_rated_books.each do |top_book| %>
-      <li><%= top_book.title %></li>
+    <% @top_rated_books.each do |book| %>
+      <li><%= link_to(book.title, book_path(book)) %></li>
     <% end %>
     </ul>
 
   <h3>Bottom Rated Books </h3>
     <ul>
-    <% @bottom_rated_books.each do |bottom_book| %>
-      <li><%= bottom_book.title %></li>
+    <% @bottom_rated_books.each do |book| %>
+      <li><%= link_to(book.title, book_path(book)) %></li>
     <% end %>
     </ul>
 
   <h3>Top Users</h3>
     <ul>
     <% @top_users.each do |user| %>
-      <li><%= user.name %></li>
+      <li><%= link_to(user.name, user_path(user))%></li>
     <% end %>
     </ul>
 </div>
@@ -46,7 +46,7 @@ Sort by:<br>
   <li><strong>Year: </strong><%= book.year %></li>
 
   <li><strong>Author(s): </strong><br>
-  <% book.authors.each do |author| %><%= author.name %> <br> <% end %></li>
+  <% book.authors.each do |author| %><%= link_to(author.name, author_path(author)) %> <br> <% end %></li>
 
   <li> <strong>Total Reviews: </strong><%= book.reviews.count %></li>
   <li> <strong>Average Rating: </strong><%= book.average_review_rating %></li>
