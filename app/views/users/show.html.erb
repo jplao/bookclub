@@ -4,14 +4,14 @@
   Sort by:<br>
   <select onchange="location = this.value;">
     <option>-------</option>
-    <option value="/users?direction=DESC">Newest First</option>
-    <option value="/users?direction=ASC">Descending First</option>
+    <option value="?sort=new">Newest First</option>
+    <option value="?sort=old">Descending First</option>
   </select>
 </div>
 
 
-<% @users.reviews.each do |review| %>
-<div class="users" id="review_<%review.id%>">
+<% @user_reviews.each do |review| %>
+<div class="users" id="review_<%=review.id%>">
 <ul>
   <strong>Review Title: <%=review.title %></strong>
   <li>Rating: <%= review.score %> </li>
