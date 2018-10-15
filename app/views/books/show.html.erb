@@ -9,7 +9,8 @@
   <li><strong>Pages: </strong><%= @books.pages %></li>
   <li><strong>Year: </strong><%= @books.year %></li>
   <li><strong>Author(s): </strong><br>
-  <% @books.authors.each do |author| %><%= author.name %> <br> <% end %></li>
+  <% @books.authors.each do |author| %>
+  <%= link_to(author.name, author_path(author)) %> <br> <% end %></li>
 </ul>
 </div>
 
