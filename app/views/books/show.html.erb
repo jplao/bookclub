@@ -1,5 +1,6 @@
 
 <%= link_to("All Books", root_path) %>
+<%= link_to("New Review", new_review_path) %>
 
 <h1><%= @books.title %></h1>
 <%= link_to "Delete Book", book_path(@books), method: :delete %>

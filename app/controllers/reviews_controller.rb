@@ -7,4 +7,8 @@ class ReviewsController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def new
+    @review = Review.new
+  end
+
 end
