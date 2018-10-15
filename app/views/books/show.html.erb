@@ -9,7 +9,7 @@
   <li><strong>Pages: </strong><%= @books.pages %></li>
   <li><strong>Year: </strong><%= @books.year %></li>
   <li><strong>Author(s): </strong><br>
-  <% @books.authors.each do |author| %>
+  <% @book_authors.each do |author| %>
   <%= link_to(author.name, author_path(author)) %> <br> <% end %></li>
 </ul>
 </div>
@@ -19,7 +19,7 @@
   <h2>Statistics</h2>
 
   <h3> Top 3 Reviews </h3>
-  <% @books.reviews.top_three.each do |review| %>
+  <% @top_three.each do |review| %>
     <ul>
     <li><strong><%= review.title %> </strong></li>
       <strong>User Name: </strong><%= review.user.name %><br>
@@ -28,7 +28,7 @@
   <% end %>
 
   <h3> Bottom 3 Reviews </h3>
-  <% @books.reviews.bottom_three.each do |review| %>
+  <% @bottom_three.each do |review| %>
     <ul>
     <li><strong><%= review.title %> </strong></li>
       <strong>User Name: </strong><%= review.user.name %><br>
@@ -38,14 +38,14 @@
 
   <h3>Average Rating: </h3>
   <ul>
-  <li><%= @books.reviews.average_rating %></li>
+  <li><%= @review_avg_rating %></li>
   </ul>
 </div>
 
 <div class="reviews">
   <h2>Reviews: </h2>
   <ul>
-  <% @books.reviews.each do |review| %>
+  <% @books_reviews.each do |review| %>
   <li><strong><%= review.title %></strong></li>
   <strong>User Name: </strong><%= review.user.name %>
   <br><strong>Rating: </strong><%= review.score %>
