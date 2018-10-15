@@ -20,5 +20,28 @@ class Review < ApplicationRecord
       ordered_reviews.first(3)
   end
 
-  
+  def self.top_review_title
+    if self.all.empty?
+      'No reviews'
+    else
+      order(score: :desc).first.title
+    end
+  end
+
+  def self.top_review_score
+    if self.all.empty?
+      'No reviews'
+    else
+      order(score: :desc).first.score
+    end
+  end
+
+  def self.top_review_user
+    if self.all.empty?
+      'No reviews'
+    else
+      order(score: :desc).first.user.name
+    end
+  end
+
 end

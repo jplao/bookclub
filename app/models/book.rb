@@ -20,19 +20,27 @@ class Book < ApplicationRecord
   end
 
   def self.top_rated_books
+    if self.reviews == []
+      0
+    else
     select('books.*, avg(reviews.score) as avg_score')
-    .joins(:reviews)
+    .join(:reviews)
     .group(:book_id, :id)
     .order('avg_score desc', 'title asc')
     .limit(3)
+    end
   end
 
   def self.bottom_rated_books
+    if self.reviews == []
+      0
+    else
     select('books.*, avg(reviews.score) as avg_score')
-    .joins(:reviews)
+    .join(:reviews)
     .group(:book_id, :id)
     .order('avg_score asc', 'title asc')
     .limit(3)
+    end
   end
 
 end
