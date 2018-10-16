@@ -1,24 +1,30 @@
+<div><%= link_to("All Books", root_path) %></div>
 
 <div>
-
-<%= form_for(@review) do |f| %>
+  <h2>Add a Review</h2>
+  <%= form_for(@review) do |f| %>
   <p>
-    <%= f.label :title %><br/>
+    <strong><%= f.label :title %>:</strong>
     <%= f.text_field :title %>
   </p>
+  <p> <strong>Score: </strong>
+      <%= f.radio_button :score, '1' %>
+      <%= f.label :score, '1', :value => '1' %>
+      <%= f.radio_button :score, '2' %>
+      <%= f.label :score, '2', :value => '2' %>
+      <%= f.radio_button :score, '3' %>
+      <%= f.label :score, '3', :value => '3' %>
+      <%= f.radio_button :score, '4' %>
+      <%= f.label :score, '4', :value => '4' %>
+      <%= f.radio_button :score, '5' %>
+      <%= f.label :score, '5', :value => '5' %>
+    </p>
   <p>
-    <%= f.label :score %>
-    <%= f.number_field :score %>
-
-  </p>
-  <p>
-    <%= f.label :description %><br/>
+    <strong><%= f.label :description %>:</strong>
     <%= f.text_field :description %>
-
   </p>
   <p>
     <%= f.submit %>
   </p>
 <% end %>
-
 </div>
