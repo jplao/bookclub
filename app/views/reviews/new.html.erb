@@ -1,14 +1,14 @@
+<div><%= link_to("All Books", root_path) %></div>
 
 <div>
-
+  <h2>Add a Review</h2>  
 <%= form_for(@review) do |f| %>
   <%= f.hidden_field :book_id, value: params[:book_id] %>
   <p>
-    <%= f.label :title %><br/>
+    <strong><%= f.label :title %>:</strong>
     <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :score %>
+
+    <strong><%= f.label :score %>:</strong>
     <% (1..5).each do |scr_point| %>
       <%= f.radio_button :score, scr_point %> <%= scr_point %><br />
     <% end %>
@@ -18,13 +18,11 @@
   <p>
   </p>
   <p>
-    <%= f.label :description %><br/>
+    <strong><%= f.label :description %>:</strong>
     <%= f.text_field :description %>
-
   </p>
   <p>
     <%= f.submit %>
   </p>
 <% end %>
-
 </div>
