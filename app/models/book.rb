@@ -3,6 +3,7 @@ class Book < ApplicationRecord
   has_many :book_authors, dependent: :destroy
   has_many :authors, through: :book_authors, dependent: :destroy
 
+  validates_presence_of :title, :pages, :year
 
   def self.sort_by(column, direction)
     select('books.*, avg(reviews.score) as avg_score, count(reviews.id) as total_reviews')

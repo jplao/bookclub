@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'user can create a book' do
-  it 'when visiting /books/new' do
+  xit 'when visiting /books/new' do
 
   book_title = "New Book"
   book_pages = 432

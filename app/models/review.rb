@@ -2,6 +2,8 @@ class Review < ApplicationRecord
   belongs_to :book
   belongs_to :user
 
+  validates_presence_of :title, :description, :score
+
   def self.average_rating
     if self.all.empty?
       0

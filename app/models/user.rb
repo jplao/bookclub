@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :reviews
 
+  validates_presence_of :name
+
   def self.top_users
     select('users.*, count(reviews.id) as total_reviews')
     .joins(:reviews)

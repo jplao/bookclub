@@ -5,6 +5,12 @@ describe Review, type: :model do
     it { should belong_to(:book) }
   end
 
+  describe "validations" do
+    it {should validate_presence_of(:title)}
+    it {should validate_presence_of(:description)}
+    it {should validate_presence_of(:score)}
+  end
+
   describe 'class methods' do
     describe '.average_rating' do
       xit 'calculates the average rating score' do
