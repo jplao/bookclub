@@ -9,9 +9,10 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <strong><%= f.label :score %>:</strong><br>
+    <strong>Score:</strong><br>
     <% (1..5).each do |scr_point| %>
-      <%= f.radio_button :score, scr_point %> <%= scr_point %><br />
+    <strong><%= f.label :score, scr_point %></strong>
+      <%= f.radio_button :score, scr_point %><br />
     <% end %>
   </p>
     <%= f.label :user_name %>
