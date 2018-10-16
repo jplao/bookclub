@@ -10,7 +10,7 @@
   <div class="books">
   <h3><%= link_to(book.title, book_path(book))%></h3>
     Pages: <%= book.pages %>
-    <br>Authors: <% book.authors.each do |author| %>
+    <br>Other Authors: <% book.authors.each do |author| %>
       <% if author != @author %>
       <%= link_to(author.name, author_path(author))%>
       <% end %>
