@@ -1,3 +1,5 @@
+<div><%= link_to("All Books", root_path) %></div>
+
 <h1><%= @users.name %></h1>
 
 <div class="sort">
@@ -14,6 +16,7 @@
 <div class="users" id="review_<%=review.id%>">
 <ul>
   <strong>Review Title: <%=review.title %></strong>
+  <li>Book: <%= Book.find(review.book_id).title %></li>
   <li>Rating: <%= review.score %> </li>
   <li>Comments: <%= review.description %></li>
 </ul>

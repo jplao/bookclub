@@ -1,5 +1,8 @@
 <h1>All Books</h1>
+<div class="links">
 <%= link_to "Add Book", new_book_path %>
+</div>
+
 <div class="statistics">
   <h2>Statistics</h2>
   <h3>Top Rated Books: </h3>
@@ -9,14 +12,14 @@
     <% end %>
     </ul>
 
-  <h3>Bottom Rated Books </h3>
+  <h3>Bottom Rated Books: </h3>
     <ul>
     <% @bottom_rated_books.each do |book| %>
       <li><%= link_to(book.title, book_path(book)) %></li>
     <% end %>
     </ul>
 
-  <h3>Top Users</h3>
+  <h3>Top Users:</h3>
     <ul>
     <% @top_users.each do |user| %>
       <li><%= link_to(user.name, user_path(user))%></li>
@@ -26,20 +29,20 @@
 <div class="sort">
 
 Sort by:<br>
-<select onchange="location = this.value;">
+<select id="sort_options" onchange="location = this.value;">
 <option>-------</option>
-<option value="/books?sort=avg_score&direction=DESC">Average Rating Ascending</option>
-<option value="/books?sort=avg_score&direction=ASC">Average Rating Descending</option>
-<option value="/books?sort=pages&direction=DESC">Number of Pages Ascending</option>
-<option value="/books?sort=pages&direction=ASC">Number of Pages Descending</option>
-<option value="/books?sort=total_reviews&direction=DESC">Total Number of Reviews Ascending</option>
-<option value="/books?sort=total_reviews&direction=ASC">Total Number of Reviews Descending</option>
+<option id="avg_asc" value="/books?sort=avg_score&direction=DESC">Average Rating Ascending</option>
+<option id="avg_desc" value="/books?sort=avg_score&direction=ASC">Average Rating Descending</option>
+<option id="pages_asc" value="/books?sort=pages&direction=DESC">Number of Pages Ascending</option>
+<option id="pages_desc" value="/books?sort=pages&direction=ASC">Number of Pages Descending</option>
+<option id="tot_asc" value="/books?sort=total_reviews&direction=DESC">Total Number of Reviews Ascending</option>
+<option id="tot_desc" value="/books?sort=total_reviews&direction=ASC">Total Number of Reviews Descending</option>
 
 </select>
 </div>
 
 <% @books.each do |book| %>
-<div class="books">
+<div class="books" id="book-<%book.id%>">
 <h2><%= link_to(book.title, book_path(book)) %></h2>
 <ul>
   <li><strong>Pages: </strong><%= book.pages %></li>

@@ -11,4 +11,10 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
+  def create
+    review_params = params.require(:review).permit(:title, :pages, :year, )
+    @review = Review.new(review_params)
+    @review.save
+    redirect_to "/books/#{@review.book_id}"
+  end
 end

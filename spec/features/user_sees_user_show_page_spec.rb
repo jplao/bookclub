@@ -29,4 +29,23 @@ RSpec.describe "a visitor visits the user show page" do
     expect(page).to_not have_content(review_3.title)
     expect(page).to_not have_content(review_3.description)
   end
+
+  describe 'user can delete a review' do
+    it 'when visiting /users/:id' do
+      illuminae = Book.create(title: 'Illuminae', pages: 608, year: 2015)
+      review_1 = illuminae.reviews.create(title: 'Loved it!',
+                              description: 'Instead of narrative, this book is presented through transcripts of interviews describing events, email conversations, reports, graphic elements.' ,
+                              score: 5)
+
+      user_1 = User.create(name: "Renny Johnson")
+      user_1.reviews << [review_1]
+
+      visit "/users/#{user_1.id}"
+      click_on "Delete Review"
+
+      expect(page).to_not have_content(review_1.title)
+      expect(page).to_not have_content(review_1.description)
+      expect(current_path). to eq("/users/#{user_1.id}")
+    end
+  end
 end

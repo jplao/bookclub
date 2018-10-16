@@ -6,11 +6,9 @@ class AuthorsController < ApplicationController
   end
 
   def destroy
-    @authors = Author.find(params[:id])
-    @book_ids = Author.find(params[:id]).book_ids
-    @books = Book.find(:id).where(book.id == @books_ids)
-    @books.destroy
-    @authors.destroy
+    @author = Author.find(params[:id])
+    Book.destroy_books(params[:id])
+    @author.destroy
     redirect_to root_path
   end
 

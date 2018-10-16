@@ -1,7 +1,11 @@
+
+<div><%= link_to("All Books", root_path) %></div>
 <h1> <%= @author.name %></h1>
+<div>
 <%= link_to "Delete Author", author_path(@author), method: :delete %>
+</div>
 
-
+<div class="grid">
 <div class="books">
 <h2>Books</h2>
   <ul>
@@ -21,5 +25,5 @@
     </ul>
   <% end %>
   </ul>
-
+</div>
 </div>
