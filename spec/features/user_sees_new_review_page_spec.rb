@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'user can create a new review' do
-  xit 'when visiting /review/new' do
+  it 'when visiting /review/new' do
   illuminae = Book.create(title: 'Illuminae', pages: 608, year: 2015)
 
   review_title = "New Review"
