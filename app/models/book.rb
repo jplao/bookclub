@@ -34,4 +34,15 @@ class Book < ApplicationRecord
       reviews.average(:score).round(2)
     end
   end
+
+  def self.destroy_books(author_id)
+    books = select('books.*, count(DISTINCT book_authors) AS auth_count')
+    .joins(:book_authors)
+    .group(:id, :book_id)
+    .having('count(book_authors) = 1')
+    .where("books.id IN (SELECT book_authors.book_id FROM book_authors WHERE author_id = ?)", author_id)
+    .pluck(:id)
+
+    destroy(books)
+  end
 end
