@@ -31,7 +31,8 @@ class BooksController < ApplicationController
 
   def create
     book_params = params.require(:book).permit(:title, :pages, :year, )
-    @book = Book.new(book_params)
+    @book = Book.book_create(book_params)
+    @book.before_save
     @book.save
     redirect_to @book
   end
