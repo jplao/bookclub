@@ -11,14 +11,6 @@ class Book < ApplicationRecord
     .order("#{column} #{direction}", 'title asc')
   end
 
-  def average_review_rating
-    if reviews == []
-      0
-    else
-      reviews.average(:score).round(2)
-    end
-  end
-
   def self.top_rated_books
     select('books.*, avg(reviews.score) as avg_score')
     .joins(:reviews)
@@ -35,4 +27,11 @@ class Book < ApplicationRecord
     .limit(3)
   end
 
+  def average_review_rating
+    if reviews == []
+      0
+    else
+      reviews.average(:score).round(2)
+    end
+  end
 end
