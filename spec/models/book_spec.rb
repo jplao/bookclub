@@ -146,5 +146,12 @@ describe Book, type: :model do
       expect(illuminae.average_review_rating).to eq 4
       end
     end
+    describe"before_save" do
+      it "capitalizes title before saving" do
+        obsidio = Book.create(title: 'obsidio', pages: 621, year: 2018)
+
+      expect(obsidio.before_save).to eq("Obsidio")
+      end
+    end
   end
 end
