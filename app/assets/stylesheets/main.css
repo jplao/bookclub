@@ -21,3 +21,28 @@ div {
 div span {
   margin: 15px;
 }
+
+.statistics{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.stats_title{
+  grid-column: 1 / 4;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.listed_books{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.title{
+  text-align: center;
+}
+
+.books{
+  text-align: center;
+}

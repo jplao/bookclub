@@ -1,33 +1,37 @@
-<h1>All Books</h1>
+<h1>Welcome to Book Club</h1>
 <div class="links">
 <%= link_to "Add Book", new_book_path %>
 </div>
 
 <div class="statistics">
-  <h2>Statistics</h2>
-  <h3>Top Rated Books: </h3>
+  <div class= "stats_title">Statistics</div>
+  <div>
+    <h3>Top Rated Books: </h3>
     <ul>
     <% @top_rated_books.each do |book| %>
       <li><%= link_to(book.title, book_path(book)) %></li>
     <% end %>
     </ul>
-
+  </div>
+  <div>
   <h3>Bottom Rated Books: </h3>
     <ul>
     <% @bottom_rated_books.each do |book| %>
       <li><%= link_to(book.title, book_path(book)) %></li>
     <% end %>
     </ul>
-
+  </div>
+  <div>
   <h3>Top Users:</h3>
     <ul>
     <% @top_users.each do |user| %>
       <li><%= link_to(user.name, user_path(user))%></li>
     <% end %>
     </ul>
+  </div>
 </div>
 <div class="sort">
-
+<h2>All Books: </h2>
 Sort by:<br>
 <select id="sort_options" onchange="location = this.value;">
 <option>-------</option>
@@ -41,20 +45,16 @@ Sort by:<br>
 </select>
 </div>
 
-<% @books.each do |book| %>
-<div class="books" id="book-<%book.id%>">
-<h2><%= link_to(book.title, book_path(book)) %></h2>
-<ul>
-  <li><strong>Pages: </strong><%= book.pages %></li>
-  <li><strong>Year: </strong><%= book.year %></li>
-
-  <li><strong>Author(s): </strong><br>
-  <% book.authors.each do |author| %><%= link_to(author.name, author_path(author)) %> <br> <% end %></li>
-
-  <li> <strong>Total Reviews: </strong><%= book.reviews.count %></li>
-  <li> <strong>Average Rating: </strong><%= book.average_review_rating %></li>
-
-</ul>
-</div>
-
-<% end %>
+<section class="listed_books">
+  <% @books.each do |book| %>
+  <div class="books" id="book-<%book.id%>">
+    <div class="title"><h2><%= link_to(book.title, book_path(book)) %></h2></div>
+      <strong>Pages: </strong><%= book.pages %>
+      <br><strong>Year: </strong><%= book.year %>
+      <br><strong>Author(s): </strong><br>
+        <% book.authors.each do |author| %><%= link_to(author.name, author_path(author)) %> <br> <% end %>
+      <br><strong>Total Reviews: </strong><%= book.reviews.count %>
+      <br><strong>Average Rating: </strong><%= book.average_review_rating %>
+  </div>
+  <% end %>
+</section>

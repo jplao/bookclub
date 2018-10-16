@@ -7,19 +7,9 @@
     <%= f.text_field :title %>
   </p>
   <p>
-
-    <%= f.radio_button :rating, 'male' %>
-    <%= f.label :gender_male, "Male" %>
-
-    <%= f.radio_button :rating, 'female' %>
-    <%= f.label :gender_female, "Female" %>
-  </p>
-  <p>
-    <%= f.label :year %><br/>
-    <%= f.number_field :year %>
-    
-    <%= f.label :score %><br/>
+    <%= f.label :score %>
     <%= f.number_field :score %>
+
   </p>
   <p>
     <%= f.label :description %><br/>
