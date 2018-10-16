@@ -27,6 +27,29 @@ class Book < ApplicationRecord
     .limit(3)
   end
 
+  def self.book_create(params)
+    if Book.find_by(title: params[:title]) == nil && Author.find_by(name: params[:authors]) == nil
+      author = Author.create(name: params[:authors])
+      book = author.books.create(title: params[:title], pages: params[:pages], year: params[:year])
+    elsif Book.find_by(title: params[:title]) && Author.find_by(name: params[:authors]) == nil
+      author = Author.create(name: params[:authors])
+      book = Book.find_by(title: params[:title])
+      author.books << book
+    elsif Book.find_by(title: params[:title]) == nil && Author.find_by(name: params[:authors])
+      author = Author.find_by(name: params[:authors])
+      book = author.books.create(title: params[:title], pages: params[:pages], year: params[:year])
+    else
+      book = Book.find_by(title: params[:title])
+      Author.find_by(name: params[:authors]).books << book
+    end
+
+    book
+  end
+
+  def before_save
+    self.title.capitalize!
+  end
+
   def average_review_rating
     if reviews == []
       0
