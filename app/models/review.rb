@@ -1,7 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :book
   belongs_to :user
-
+  
   validates_presence_of :title, :description, :score
 
   def self.average_rating
@@ -55,7 +55,7 @@ class Review < ApplicationRecord
   end
 
   def user_name
-    user.name
+    user&.name
   end
 
 end

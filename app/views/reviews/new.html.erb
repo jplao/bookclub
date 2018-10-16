@@ -1,24 +1,22 @@
 <div><%= link_to("All Books", root_path) %></div>
 
 <div>
-  <h2>Add a Review</h2>
-  <%= form_for(@review) do |f| %>
+  <h2>Add a Review</h2>  
+<%= form_for(@review) do |f| %>
+  <%= f.hidden_field :book_id, value: params[:book_id] %>
   <p>
     <strong><%= f.label :title %>:</strong>
     <%= f.text_field :title %>
+
+    <strong><%= f.label :score %>:</strong>
+    <% (1..5).each do |scr_point| %>
+      <%= f.radio_button :score, scr_point %> <%= scr_point %><br />
+    <% end %>
   </p>
-  <p> <strong>Score: </strong>
-      <%= f.radio_button :score, '1' %>
-      <%= f.label :score, '1', :value => '1' %>
-      <%= f.radio_button :score, '2' %>
-      <%= f.label :score, '2', :value => '2' %>
-      <%= f.radio_button :score, '3' %>
-      <%= f.label :score, '3', :value => '3' %>
-      <%= f.radio_button :score, '4' %>
-      <%= f.label :score, '4', :value => '4' %>
-      <%= f.radio_button :score, '5' %>
-      <%= f.label :score, '5', :value => '5' %>
-    </p>
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name %>
+  <p>
+  </p>
   <p>
     <strong><%= f.label :description %>:</strong>
     <%= f.text_field :description %>
