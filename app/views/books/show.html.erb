@@ -1,9 +1,11 @@
-
-<%= link_to("All Books", root_path) %>
-<%= link_to("New Review", new_review_path) %>
+<div>
+<span><%= link_to("All Books", root_path) %></span>
+<span><%= link_to("New Review", new_review_path) %></span>
+<span><%= link_to "Delete Book", book_path(@books), method: :delete %></span>
+</div>
 
 <h1><%= @books.title %></h1>
-<%= link_to "Delete Book", book_path(@books), method: :delete %>
+
 
 <div class="books">
 <h2> Book Info </h2>
