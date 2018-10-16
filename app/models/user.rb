@@ -5,8 +5,8 @@ class User < ApplicationRecord
 
   def self.top_users
     select('users.*, count(reviews.id) as total_reviews')
-    .joins(:reviews)
-    .group(:user_id, :id)
+    .left_joins(:reviews)
+    .group(:id)
     .order('total_reviews desc')
     .limit(3)
   end

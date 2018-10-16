@@ -1,6 +1,6 @@
 <div>
 <span><%= link_to("All Books", root_path) %></span>
-<span><%= link_to("New Review", new_review_path) %></span>
+<span><%= link_to("New Review", new_review_path(book_id: @books.id)) %></span>
 <span><%= link_to "Delete Book", book_path(@books), method: :delete %></span>
 </div>
 
@@ -13,7 +13,7 @@
   <strong>Year: </strong><%= @books.year %><br>
   <strong>Author(s): </strong><br>
   <% @book_authors.each do |author| %>
-    <%= link_to(author.name, author_path(author)) %> <br>
+    <%= link_to(author.name || "Anonymous", author_path(author)) %> <br>
   <% end %>
 </div>
 

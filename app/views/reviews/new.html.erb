@@ -2,14 +2,20 @@
 <div>
 
 <%= form_for(@review) do |f| %>
+  <%= f.hidden_field :book_id, value: params[:book_id] %>
   <p>
     <%= f.label :title %><br/>
     <%= f.text_field :title %>
   </p>
   <p>
     <%= f.label :score %>
-    <%= f.number_field :score %>
-
+    <% (1..5).each do |scr_point| %>
+      <%= f.radio_button :score, scr_point %> <%= scr_point %><br />
+    <% end %>
+  </p>
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name %>
+  <p>
   </p>
   <p>
     <%= f.label :description %><br/>
