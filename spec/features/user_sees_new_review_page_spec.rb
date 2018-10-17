@@ -15,7 +15,7 @@ describe 'user can create a new review' do
   expect(current_path).to eq("/reviews/new")
 
   fill_in 'review[title]', with: review_title
-  choose("score_4")
+  choose("review_score_4")
   fill_in 'review[user_name]', with: user_name
   fill_in 'review[description]', with: description
   click_on "Create Review"
