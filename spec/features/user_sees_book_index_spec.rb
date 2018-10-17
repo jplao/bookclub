@@ -52,6 +52,7 @@ RSpec.describe "a visitor visits the book index page" do
     expect(page).to have_content("Total Reviews: 3")
     expect(page).to have_content("Average Rating: 4")
   end
+
   it 'should show the statistics for all books' do
     illuminae = Book.create(title: 'Illuminae', pages: 608, year: 2015)
     review_1 = illuminae.reviews.create(title: 'Loved it!',
@@ -90,8 +91,13 @@ RSpec.describe "a visitor visits the book index page" do
                           description: "This was my first James Rollins book and it was a page turning thriller. The conceptual framework that kept the action moving was most creative. On the negative side readers have to suspend reality with regard to much of the story line. However as a positive, the action is almost continuous so one doesn't really have the time - or the inclination - to reflect on the absurdities.",
                           score: 5)
 
+
+    review_10 = amazonia.reviews.create(title: 'Wut?',
+                          description: "blabla",
+                          score: 5)
+
     user_1 = User.create(name: "Renny Johnson")
-    user_1.reviews << [review_1,review_2, review_8]
+    user_1.reviews << [review_1,review_2, review_8, review_10]
 
     user_2 = User.create(name: "Tobi Lou")
     user_2.reviews << [review_3, review_6]

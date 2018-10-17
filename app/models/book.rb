@@ -29,19 +29,20 @@ class Book < ApplicationRecord
   end
 
   def self.book_create(params)
-    if Book.find_by(title: params[:title]) == nil && Author.find_by(name: params[:authors]) == nil
-      author = Author.create(name: params[:authors])
-      book = author.books.create(title: params[:title], pages: params[:pages], year: params[:year])
-    elsif Book.find_by(title: params[:title]) && Author.find_by(name: params[:authors]) == nil
-      author = Author.create(name: params[:authors])
-      book = Book.find_by(title: params[:title])
+    book = Book.find_by(title: params[:title])
+    author = Author.find_by(name: params[:authors])
+    book_params = { title: params[:title], pages: params[:pages], year: params[:year] }
+    author_params = { name: params[:authors] }
+    if book.nil? && author.nil?
+      author = Author.create!(author_params)
+      book = author.books.create!(book_params)
+    elsif book && author.nil?
+      author = Author.create!(author_params)
       author.books << book
-    elsif Book.find_by(title: params[:title]) == nil && Author.find_by(name: params[:authors])
-      author = Author.find_by(name: params[:authors])
-      book = author.books.create(title: params[:title], pages: params[:pages], year: params[:year])
+    elsif book.nil? && author
+      book = author.books.create(book_params)
     else
-      book = Book.find_by(title: params[:title])
-      Author.find_by(name: params[:authors]).books << book
+      author.books << book
     end
 
     book
