@@ -6,6 +6,7 @@
 <div class="statistics">
   <div class= "stats_title">Statistics</div>
   <div>
+    <% if @books != [] %>
     <h3>Top Rated Books: </h3>
     <ul>
     <% @top_rated_books.each do |book| %>
@@ -20,6 +21,7 @@
       <li><%= link_to(book.title, book_path(book)) %></li>
     <% end %>
     </ul>
+    <% end %>
   </div>
   <div>
   <h3>Top Users:</h3>
