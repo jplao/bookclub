@@ -8,7 +8,7 @@ describe 'user can create a book' do
   book_year = 2017
   author_name = "Random Author"
 
-  visit '/books/new'
+  visit books_new_path
 
   fill_in 'book[title]', with: book_title
   fill_in 'book[pages]', with: book_pages

@@ -58,7 +58,7 @@ RSpec.describe "a visitor visits the book index page" do
                             description: "In Wendy Webb’s entrancing Daughters of the Lake, dreams open a door between the dead and the living, a lake spirit calls to a family of gifted women, and a century-old murder is solved under the cover of fog. This northern gothic gem is everything that is delicious, spooky, and impossible to put down." ,
                             score: 5)
 
-    visit "/books"
+    visit books_path
 
     expect(page).to have_content(fall_apart.title)
     expect(page).to have_content(red_war.title)
@@ -121,7 +121,7 @@ RSpec.describe "a visitor visits the book index page" do
     review_41 = daughters_of_the_lake.reviews.create(title: 'Well Delineated',
                             description: "In Wendy Webb’s entrancing Daughters of the Lake, dreams open a door between the dead and the living, a lake spirit calls to a family of gifted women, and a century-old murder is solved under the cover of fog. This northern gothic gem is everything that is delicious, spooky, and impossible to put down." ,
                             score: 5)
-    visit "/books"
+    visit books_path
 
     expect(page).to have_content(fall_apart.title)
     expect(page).to have_content(red_war.title)

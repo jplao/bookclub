@@ -40,7 +40,7 @@ RSpec.describe "a visitor visits the user show page" do
       user_1 = User.create(name: "Renny Johnson")
       user_1.reviews << [review_1]
 
-      visit "/users/#{user_1.id}"
+      visit user_path("#{user_1.id}")
       click_on "Delete Review"
 
       expect(page).to_not have_content(review_1.title)
